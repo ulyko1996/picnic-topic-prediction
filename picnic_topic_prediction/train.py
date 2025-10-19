@@ -11,9 +11,7 @@ def train_model(model_type:str = 'tfidf_lgb'):
     models = {'tfidf_lgb': Pipeline([('tfidf_vectorizer', TfidfVectorizer(stop_words='english')), 
                                      ('lightgbm', LGBMClassifier(objective='multiclass', random_state=42, verbosity=0))])}
     
-    model_pipeline = models.get(model_type)
-    
-    output = RandomizedSearchCV(model_pipeline, 
+    output = RandomizedSearchCV(models.get(model_type), 
                                 get_param_grid(model_type), 
                                 cv=5, 
                                 scoring='accuracy', 
