@@ -1,0 +1,4 @@
+tfidf_lgb:
+  lightgbm__n_estimators:
+    - 10
+    - 20
