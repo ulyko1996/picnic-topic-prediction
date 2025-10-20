@@ -9,6 +9,8 @@ def evaluate_model(model):
     y_pred = model.predict(test_data['text'])
     
     # Calculate metrics
-    mlflow.log_metric('Test accuracy', accuracy_score(y_true, y_pred))
-    mlflow.log_metric('Test F1 Score', f1_score(y_true, y_pred))
+    mlflow.log_metrics({
+        'Test accuracy': accuracy_score(y_true, y_pred), 
+        'Test F1 Score': f1_score(y_true, y_pred, average='macro'),
+    })
     mlflow.log_figure(create_confusion_matrix(y_true, y_pred), "Test Confusion Matrix.png")

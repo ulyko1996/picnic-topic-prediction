@@ -37,7 +37,9 @@ def train_model(model_type:str = 'tfidf_lgb'):
     y_pred = output.best_estimator_.predict(X_train)
     
     mlflow.log_params(output.best_params_)
-    mlflow.log_metric('Training accuracy', output.best_score_)
-    mlflow.log_metric('Training F1 Score', f1_score(y_train, y_pred))
+    mlflow.log_metrics({
+        'Training accuracy': output.best_score_, 
+        'Training F1 Score': f1_score(y_train, y_pred, average='macro'),
+    })
     mlflow.log_figure(create_confusion_matrix(y_train, y_pred), "Training Confusion Matrix.png")
     return output.best_estimator_
