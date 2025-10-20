@@ -11,7 +11,7 @@ from lightgbm import LGBMClassifier
 
 def train_model(model_type:str = 'tfidf_lgb'):
     models = {'tfidf_lgb': Pipeline([('tfidf_vectorizer', TfidfVectorizer(stop_words='english')), 
-                                     ('lightgbm', LGBMClassifier(objective='multiclass', random_state=42, verbosity=0))])}
+                                     ('lightgbm', LGBMClassifier(objective='multiclass', random_state=42, verbose=-1))])}
     
     output = OptunaSearchCV(estimator=models.get(model_type), 
                             param_distributions=get_param_grid(model_type), 
