@@ -1,5 +1,6 @@
 from typing import Any, Dict
 from picnic_topic_prediction.utils import load_training_data
+from picnic_topic_prediction.config import OptunaSearchCVConfig
 from picnic_topic_prediction.hp_tuning import get_param_grid
 
 from optuna_integration import OptunaSearchCV
@@ -14,10 +15,9 @@ def train_model(model_type:str = 'tfidf_lgb'):
     
     output = OptunaSearchCV(estimator=models.get(model_type), 
                             param_distributions=get_param_grid(model_type), 
-                            cv=5, 
-                            scoring='accuracy', 
-                            n_trials=1,
-                            n_jobs=-1).fit(load_training_data()['text'], load_training_data()['label'])
+                            n_jobs=-1,
+                            **OptunaSearchCVConfig().model_dump(),
+                            ).fit(load_training_data()['text'], load_training_data()['label'])
     
     print(output.cv_results_)
     print(output.best_score_)
