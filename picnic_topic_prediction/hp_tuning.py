@@ -1,12 +1,9 @@
-import yaml
-
-from picnic_topic_prediction.utils import get_root_directory
+from picnic_topic_prediction.utils import load_yaml
 
 from optuna.distributions import IntDistribution, FloatDistribution, CategoricalDistribution
 
 def get_param_grid(model_type: str):
-    with open(get_root_directory() + '/picnic_topic_prediction/param_grid.yaml', 'r') as file:
-        param_grid = yaml.safe_load(file).get(model_type, None)
+    param_grid = load_yaml('/picnic_topic_prediction/param_grid.yaml').get(model_type, None)
     
     # Raise error if parameter grid config is not found for the model type 
     if param_grid is None:
