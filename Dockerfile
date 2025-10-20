@@ -7,6 +7,7 @@ WORKDIR /app
 RUN apt-get update && apt-get install -y --no-install-recommends apt-utils
 RUN apt-get -y install curl
 RUN apt-get install libgomp1
+RUN apt-get install -y unzip
 
 # Install the project's dependencies using the lockfile and settings
 RUN --mount=type=cache,target=/root/.cache/uv \
@@ -20,6 +21,7 @@ RUN --mount=type=cache,target=/root/.cache/uv \
     uv sync --locked --no-dev
 
 # Copy wordnet corpus to NLTK corpus folder
-COPY resource/wordnet /root/nltk_data/corpora/wordnet
+COPY resource/wordnet.zip /root/nltk_data/corpora/
+RUN unzip /root/nltk_data/corpora/wordnet.zip
 
 CMD uv run main.py
