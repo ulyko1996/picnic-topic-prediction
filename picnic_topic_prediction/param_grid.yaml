@@ -1,4 +1,7 @@
 tfidf_lgb:
   lightgbm__n_estimators:
-    - 10
-    - 20
+    type: int
+    kwargs:
+      low: 10
+      high: 20
+      step: 10
