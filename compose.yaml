@@ -1,0 +1,8 @@
+services:
+  full-pipeline:
+    build: .
+    command: sh -c "uv run main.py && uv run mlflow server --host 0.0.0.0 --port 50 --backend-store-uri $MLFLOW_TRACKING_URI"
+    ports:
+      - "5050:50"
+    environment:
+      - MLFLOW_TRACKING_URI=sqlite:///mlruns.db
