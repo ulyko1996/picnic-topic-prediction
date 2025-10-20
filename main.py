@@ -10,7 +10,7 @@ def main():
     mlflow.start_run()
     
     final_model = train_model()
-    print(evaluate_model(final_model))
+    evaluate_model(final_model)
     
     mlflow.end_run()
 
