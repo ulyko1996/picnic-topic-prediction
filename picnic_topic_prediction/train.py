@@ -9,6 +9,8 @@ from sklearn.pipeline import Pipeline
 from sklearn.feature_extraction.text import TfidfVectorizer
 from lightgbm import LGBMClassifier
 
+import mlflow
+
 MODELS = {
     'tfidf_lgb': Pipeline([('tfidf_vectorizer', TfidfVectorizer(stop_words='english')), 
                            ('lightgbm', LGBMClassifier(objective='multiclass', random_state=42, verbose=-1))])
@@ -21,6 +23,6 @@ def train_model(model_type:str = 'tfidf_lgb'):
                             **OptunaSearchCVConfig().model_dump(),
                             ).fit(load_training_data()['text'], load_training_data()['label'])
     
-    print(output.cv_results_)
-    print(output.best_score_)
+    mlflow.log_params(output.best_params_)
+    mlflow.log_metric('Training accuracy', output.best_score_)
     return output.best_estimator_
