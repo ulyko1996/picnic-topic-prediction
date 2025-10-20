@@ -1,6 +1,9 @@
 from pydantic import BaseModel
 from optuna.distributions import IntDistribution, FloatDistribution, CategoricalDistribution
 
+class MLFlowExperimentConfig(BaseModel):
+    experiment_name: str = 'tfidf-lightgbm'
+
 class OptunaSearchCVConfig(BaseModel):
     cv: int = 5
     scoring: str = 'accuracy'
