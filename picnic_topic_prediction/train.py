@@ -9,11 +9,13 @@ from sklearn.pipeline import Pipeline
 from sklearn.feature_extraction.text import TfidfVectorizer
 from lightgbm import LGBMClassifier
 
+MODELS = {
+    'tfidf_lgb': Pipeline([('tfidf_vectorizer', TfidfVectorizer(stop_words='english')), 
+                           ('lightgbm', LGBMClassifier(objective='multiclass', random_state=42, verbose=-1))])
+    }
+
 def train_model(model_type:str = 'tfidf_lgb'):
-    models = {'tfidf_lgb': Pipeline([('tfidf_vectorizer', TfidfVectorizer(stop_words='english')), 
-                                     ('lightgbm', LGBMClassifier(objective='multiclass', random_state=42, verbose=-1))])}
-    
-    output = OptunaSearchCV(estimator=models.get(model_type), 
+    output = OptunaSearchCV(estimator=MODELS.get(model_type), 
                             param_distributions=get_param_grid(model_type), 
                             n_jobs=-1,
                             **OptunaSearchCVConfig().model_dump(),
