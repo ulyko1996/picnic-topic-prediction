@@ -9,6 +9,13 @@ class OptunaSearchCVConfig(BaseModel):
     scoring: str = 'accuracy'
     n_trials: int = 1
     
+LABEL_MAPPING = {
+    0: "World",
+    1: "Sports",
+    2: "Business",
+    3: "Science/Technology"
+}
+    
 PARAMETER_GRID = {
     'tfidf_lgb': {
         'tfidf__ngram_range': CategoricalDistribution([(1,1), (1,2)]),

@@ -25,8 +25,8 @@ COPY resource/wordnet.zip /root/nltk_data/corpora/
 RUN unzip /root/nltk_data/corpora/wordnet.zip
 
 ENV MLFLOW_TRACKING_URI=sqlite:///mlflow.db
-ENV MLFLOW_ARTIFACT_ROOT=file:///mlflow/mlruns
+ENV MLFLOW_ARTIFACT_ROOT=/app/mlruns
 
 EXPOSE 50
 
-CMD uv run main.py && uv run mlflow server --host 0.0.0.0 --port 50 --backend-store-uri sqlite:///mlflow.db --default-artifact-root file:///mlflow/mlruns
+CMD uv run main.py && uv run mlflow server --host 0.0.0.0 --port 50 --backend-store-uri sqlite:///mlflow.db --default-artifact-root /app/mlruns
