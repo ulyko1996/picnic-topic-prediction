@@ -1,10 +1,20 @@
 from pydantic import BaseModel
 from optuna.distributions import IntDistribution, FloatDistribution, CategoricalDistribution
 
+class MLFlowExperimentConfig(BaseModel):
+    experiment_name: str = 'tfidf-lightgbm'
+
 class OptunaSearchCVConfig(BaseModel):
     cv: int = 5
     scoring: str = 'accuracy'
     n_trials: int = 1
+    
+LABEL_MAPPING = {
+    0: "World",
+    1: "Sports",
+    2: "Business",
+    3: "Science/Technology"
+}
     
 PARAMETER_GRID = {
     'tfidf_lgb': {

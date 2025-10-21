@@ -23,5 +23,3 @@ RUN --mount=type=cache,target=/root/.cache/uv \
 # Copy wordnet corpus to NLTK corpus folder
 COPY resource/wordnet.zip /root/nltk_data/corpora/
 RUN unzip /root/nltk_data/corpora/wordnet.zip
-
-CMD uv run main.py
