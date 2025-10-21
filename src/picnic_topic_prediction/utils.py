@@ -6,7 +6,7 @@ from pathlib import Path
 from sklearn.metrics import ConfusionMatrixDisplay
 from picnic_topic_prediction.config import LABEL_MAPPING
 
-PIPELINE_MODE = os.environ.get('MODE', 'prod')
+PIPELINE_MODE = os.environ.get('MODE', 'test')
 
 def get_root_directory():
     return Path(__file__).parent.parent.parent.as_posix()
