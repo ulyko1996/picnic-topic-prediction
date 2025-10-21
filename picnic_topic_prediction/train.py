@@ -1,6 +1,6 @@
 import mlflow
 
-from picnic_topic_prediction.utils import load_training_data, create_confusion_matrix
+from picnic_topic_prediction.utils import load_data, create_confusion_matrix
 from picnic_topic_prediction.config import OptunaSearchCVConfig, PARAMETER_GRID
 
 from optuna_integration import OptunaSearchCV
@@ -27,7 +27,7 @@ MODELS = {
     }
 
 def train_model(model_type:str = 'tfidf_lgb'):
-    training_data = load_training_data()
+    training_data = load_data('train')
     X_train = training_data['text']
     y_train = training_data['label']
     output = OptunaSearchCV(estimator=MODELS.get(model_type), 

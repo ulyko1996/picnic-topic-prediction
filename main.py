@@ -5,7 +5,8 @@ from picnic_topic_prediction.eval import evaluate_model
 from picnic_topic_prediction.config import MLFlowExperimentConfig
 
 def main():
-    mlflow.set_experiment(**MLFlowExperimentConfig().model_dump())
+    mlflow_experiment_config = MLFlowExperimentConfig().model_dump()
+    mlflow.set_experiment(**mlflow_experiment_config)
     
     mlflow.start_run()
     

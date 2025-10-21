@@ -3,7 +3,7 @@ name = "picnic-topic-prediction"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
-requires-python = ">=3.13"
+requires-python = ">=3.12"
 dependencies = [
     "ipykernel>=7.0.1",
     "lightgbm>=4.6.0",
