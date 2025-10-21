@@ -2,7 +2,7 @@ from pydantic import BaseModel
 from optuna.distributions import IntDistribution, FloatDistribution, CategoricalDistribution
 
 class MLFlowExperimentConfig(BaseModel):
-    experiment_name: str = 'tfidf-lightgbm'
+    experiment_name: str = 'tfidf-lgb'
 
 class OptunaSearchCVConfig(BaseModel):
     cv: int = 5
