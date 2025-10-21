@@ -10,8 +10,8 @@ services:
     ports:
       - "5050:50"
     volumes:
-      - ${PWD}/mlruns.db:/app/mlruns.db
-      - ${PWD}/mlruns:/app/mlruns
+      - ./mlruns.db:/app/mlruns.db
+      - ./mlruns:/app/mlruns
     environment:
       - MODE=test
       - MLFLOW_TRACKING_URI=sqlite:///mlruns.db
