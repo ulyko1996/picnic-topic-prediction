@@ -1,6 +1,7 @@
 import os
 import yaml
 import pandas as pd
+from pathlib import Path
 
 from sklearn.metrics import ConfusionMatrixDisplay
 from picnic_topic_prediction.config import LABEL_MAPPING
@@ -8,15 +9,15 @@ from picnic_topic_prediction.config import LABEL_MAPPING
 PIPELINE_MODE = os.environ.get('MODE', 'prod')
 
 def get_root_directory():
-    return os.getcwd()
+    return Path(__file__).parent.parent.parent.as_posix()
 
 def load_yaml(dir: str):
     with open(get_root_directory() + dir, 'r') as file:
         return yaml.safe_load(file)
 
 def load_data(split: str = 'train'):
-    splits = {'train': 'data/train.parquet', 'test': 'data/test.parquet'}
-    df = pd.read_parquet(splits.get(split))
+    splits = {'train': '/data/train.parquet', 'test': '/data/test.parquet'}
+    df = pd.read_parquet(get_root_directory() + splits.get(split))
     
     if PIPELINE_MODE == 'prod':
         return df
