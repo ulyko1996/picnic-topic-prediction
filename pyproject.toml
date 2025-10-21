@@ -19,7 +19,19 @@ dependencies = [
     "scikit-learn>=1.7.2",
 ]
 
+[tool.uv]
+package = true
+
+[tool.uv.workspace]
+members = [
+    ".",
+]
+
+[tool.uv.sources]
+picnic-topic-prediction = { workspace = true, editable = true }
+
 [dependency-groups]
 dev = [
     "ipykernel>=7.0.1",
+    "picnic-topic-prediction",
 ]

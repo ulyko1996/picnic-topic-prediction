@@ -1680,7 +1680,7 @@ wheels = [
 [[package]]
 name = "picnic-topic-prediction"
 version = "0.1.0"
-source = { virtual = "." }
+source = { editable = "." }
 dependencies = [
     { name = "lightgbm" },
     { name = "matplotlib" },
@@ -1699,6 +1699,7 @@ dependencies = [
 [package.dev-dependencies]
 dev = [
     { name = "ipykernel" },
+    { name = "picnic-topic-prediction" },
 ]
 
 [package.metadata]
@@ -1718,7 +1719,10 @@ requires-dist = [
 ]
 
 [package.metadata.requires-dev]
-dev = [{ name = "ipykernel", specifier = ">=7.0.1" }]
+dev = [
+    { name = "ipykernel", specifier = ">=7.0.1" },
+    { name = "picnic-topic-prediction", editable = "." },
+]
 
 [[package]]
 name = "pillow"
