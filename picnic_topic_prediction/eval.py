@@ -1,10 +1,10 @@
 import mlflow
-from picnic_topic_prediction.utils import load_test_data, create_confusion_matrix
+from picnic_topic_prediction.utils import load_data, create_confusion_matrix
 
 from sklearn.metrics import accuracy_score, f1_score
 
 def evaluate_model(model):
-    test_data = load_test_data()
+    test_data = load_data('test')
     y_true = test_data['label']
     y_pred = model.predict(test_data['text'])
     
