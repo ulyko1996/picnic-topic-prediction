@@ -10,9 +10,11 @@ Two models have been explored in this project. They are:
 - A scikit-learn pipeline with TF-IDF vectorizer and LightGBM
 - A pre-trained zero-shot classifier
 
+I have not experimented with prompting LLM directly because it is less reliable and requires more work to validate the output, while a zero-shot classifier also leverages the power of deep learning and has a more stable performance.
+
 Due to time and hardware constraints, I did not run the training and evaluation pipeline on the full data. I did the following two experiments.
 - TF-IDF + LightGBM (10k training, 5k test, 10 trials for HP tuning) - 85% training accuracy, 86% test accuracy
-- Zero-shot classifier (very basic model with 2M parameters, 100 test) - 84% test accuracy
+- Zero-shot classifier (very basic model with 200M parameters, 100 test) - 84% test accuracy
 
 If you run the pipeline following the instructions in the Quickstart session, you will be able to access the MLFlow UI via http://localhost:5050/ and see the training and test accuracies, macro F1 scores, confusion matrices and feature importance plot showing the top 20 words used in the model.
 
