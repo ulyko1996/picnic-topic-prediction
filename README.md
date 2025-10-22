@@ -32,7 +32,7 @@ If time allows, I would like to make the following improvements:
 
 ### Using Docker (recommended)
 ```
-docker compose up --build
+docker compose up
 ```
 
 ### Using uv
