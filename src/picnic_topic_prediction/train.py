@@ -7,8 +7,8 @@ from optuna_integration import OptunaSearchCV
 from sklearn.pipeline import Pipeline
 
 import re
-from nltk.stem import WordNetLemmatizer
-from sklearn.feature_extraction._stop_words import ENGLISH_STOP_WORDS
+# from nltk.stem import WordNetLemmatizer
+# from sklearn.feature_extraction._stop_words import ENGLISH_STOP_WORDS
 from sklearn.feature_extraction.text import TfidfVectorizer
 import lightgbm as lgb
 from lightgbm import LGBMClassifier
@@ -17,9 +17,9 @@ import matplotlib.pyplot as plt
 from sklearn.metrics import f1_score
 
 # The lemmatizer can be passed to the tokenizer argument of TfidfVectorizer
-LEMMATIZER = lambda text: [WordNetLemmatizer().lemmatize(token) 
-                           for token in re.compile('(?u)\\b\\w\\w+\\b').findall(text) 
-                           if token not in ENGLISH_STOP_WORDS]
+# LEMMATIZER = lambda text: [WordNetLemmatizer().lemmatize(token) 
+#                            for token in re.compile('(?u)\\b\\w\\w+\\b').findall(text) 
+#                            if token not in ENGLISH_STOP_WORDS]
 
 MODELS = {
     'tfidf_lgb': Pipeline([('tfidf', TfidfVectorizer(stop_words='english')),
