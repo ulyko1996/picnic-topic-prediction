@@ -6,7 +6,7 @@ from picnic_topic_prediction.config import OptunaSearchCVConfig, PARAMETER_GRID
 from optuna_integration import OptunaSearchCV
 from sklearn.pipeline import Pipeline
 
-import re
+# import re
 # from nltk.stem import WordNetLemmatizer
 # from sklearn.feature_extraction._stop_words import ENGLISH_STOP_WORDS
 from sklearn.feature_extraction.text import TfidfVectorizer
