@@ -32,19 +32,9 @@ If time allows, I would like to make the following improvements:
 
 ### Using Docker (recommended)
 ```
-docker compose up
+docker compose up --build
 ```
 
-### Using uv
-This project uses uv as project and package manager and you can use it to run the script locally. 
-
-```
-python3 -m pip install uv
-
-python3 -m uv sync --locked
-python3 -m uv run main.py
-python3 -m uv run mlflow server --port 5050 --backend-store-uri sqlite:///mlruns.db
-```
 
 ## Project Structure
 ```
